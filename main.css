@@ -1,0 +1,38 @@
+* {
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+}
+
+.top {
+  background-color: orange;
+  display: flex;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.center {
+  background-color: yellow;
+  display: flex;
+  flex-wrap: wrap;
+  width: 400px;
+  height: 600px;
+}
+.center div {
+  width: 20px;
+  height: 20px;
+  font-size: 10;
+}
+
+.apple {
+  background-color: red;
+}
+
+.snake {
+  background-color: green;
+}
+
+/*# sourceMappingURL=main.css.map */

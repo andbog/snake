@@ -1,0 +1,47 @@
+$width: 20px;
+$height: 20px;
+$board-width: 400px;
+$board-height: 600px;
+
+
+* {
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+}
+
+.top {
+    background-color: orange;
+    display: flex;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.center {
+    background-color: yellow;
+    display: flex;
+    flex-wrap: wrap;
+    width: $board-width;
+    height: $board-height;
+    div {
+        width: $width;
+        height: $height;
+        font-size: 10;
+        }
+}
+
+// .side-left, .side-right {
+//     background-color: blue;
+//     width: 20%;
+// }
+
+.apple {
+    background-color: red;
+}
+
+.snake {
+    background-color: green;
+}
