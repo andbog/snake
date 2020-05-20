@@ -28,14 +28,14 @@
 }
 
 .apple {
-  background-image: url(../media/apple.png);
+  background-image: url(./media/apple.png);
 }
 
 .snake {
-  background-image: url(../media/snake2.png);
+  background-image: url(./media/snake2.png);
 }
 .snake-head {
-  background-image: url(../media/head.png);
+  background-image: url(./media/head.png);
 }
 .snake.head-down {
   transform: rotate(270deg);
