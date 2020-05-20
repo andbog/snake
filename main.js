@@ -1,33 +1,31 @@
-//imports
-import { initilizeBoard, placeApple, initSnake, moveSnake, changeDirection } from './js/functions.js';
-var direction=-1;
+import { initilizeBoard, placeApple, initSnake, moveSnake, changeDirection,eatApple } from './js/functions.js';
+import { direction } from './js/variables.js';
+
 
 document.addEventListener("DOMContentLoaded" , () => {
-
-
-
     initilizeBoard()
+
+
     const squares = Array.from(document.querySelectorAll(".center div"));
+
     placeApple(squares)
-    
     initSnake(squares)
 
-    // let timerId;
-    // timerId = setInterval(()=>console.log("aas"),1000);
     function newDirection(e) {
-        
-        direction = changeDirection(e,squares);
-        console.log(direction)        
+        changeDirection(e,squares);     
     }
 
-    document.addEventListener('keydown',newDirection);
+    document.addEventListener('keyup',newDirection);
       
-    let timerId = setInterval(()=>moveSnake(squares,direction),500);
+    let timerId = setInterval(()=>{
+        moveSnake(squares,direction);
+        eatApple(squares);
+
+    }
+    ,500);
 
     //start button
     //score / eating apple
-    //game over
-    
-
+    //game over - hitting walls 
 
 })
