@@ -10,6 +10,15 @@ export let snake = [1,2,3];
 export const initialPos = 70;
 export let direction = -1;
 
+let Timer=document.querySelector("#time-left");
+export let timeLeft=60;
+export let snakeSpeed=500;
+
+export function updateTimeLeft() {
+    timeLeft-=1;
+    Timer.textContent="Left "+timeLeft+" seconds"
+}
+
 export function setDirection(val) {
     if (direction !== -val) {
         direction = val;
@@ -21,5 +30,3 @@ export function setDirection(val) {
 export function setScore(value) {
     score+=value;
 }
-
-

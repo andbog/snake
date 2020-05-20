@@ -1,4 +1,4 @@
-import { width, height, board, snake, initialPos, displayScore,setScore,score,setDirection, direction } from './variables.js';
+import { width, height, board, snake, initialPos, displayScore,setScore,score,setDirection, direction,timeLeft } from './variables.js';
 
 
 //initialize board
@@ -85,15 +85,23 @@ function GameOver(squares,direction) {
     || ((snake[0]+direction)%width===0 && snake[0]%width===width-1) //hits right side
     || (squares[snake[0]+direction].classList.contains("snake")) //hits itself
     || (squares[snake[0]+direction].classList.contains("stone")) //hits stone
+    || timeLeft === 0
     ) over = true; 
 
     if (over){
-        alert("Game over your score is "+score);
+        alert("Game over! Your score is "+score);
         location.reload()
 }
 }
 
 
-// Some bugs
+/////to be done 
+//graphics
+//styling
+//levels (speed, stones, mice)
+//Leaderboard
+
+
+////// Some bugs
 // when it hits bottom and top it checks until any segment is visible before reloading
 // sometimes snakes 'hops' over itself or walls (it's possible for the head to skip squares ehn rushing by arrows)
