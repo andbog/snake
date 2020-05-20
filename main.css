@@ -15,7 +15,7 @@
 }
 
 .center {
-  background-image: url(../media/grass.png);
+  background-image: url(./media/grass.png);
   display: flex;
   flex-wrap: wrap;
   width: 400px;
