@@ -21,7 +21,7 @@ $board-height: 600px;
 }
 
 .center {
-    background-color: yellow;
+    background-image: url(../media/grass.png);
     display: flex;
     flex-wrap: wrap;
     width: $board-width;
@@ -39,9 +39,26 @@ $board-height: 600px;
 // }
 
 .apple {
-    background-color: red;
+    background-image:url(../media/apple.png);
 }
 
 .snake {
-    background-color: green;
+    background-image:url(../media/snake2.png);
+    &-head {
+        background-image:url(../media/head.png);
+    }
+    
+    &.head-down {
+        transform: rotate(270deg);
+    }
+    &.head-left {
+        transform: rotate(0deg);
+    }
+    &.head-up {
+        transform: rotate(90deg);
+    }
+    &.head-right {
+        transform: rotate(180deg);
+    }
 }
+

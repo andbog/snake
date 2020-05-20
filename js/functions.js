@@ -31,6 +31,7 @@ export function changeDirection(e,squares) {
     if (e.keyCode === 37) {
         setDirection(-1)
         moveSnake(squares,direction);
+        eatApple(squares);
     } else if (e.keyCode === 38) {
         setDirection(-width)
         moveSnake(squares,direction);
@@ -52,6 +53,15 @@ export function moveSnake(squares,direction){
     squares[snake[0]].classList.remove("snake-head");
     snake.unshift(snake[0]+direction);
     squares[snake[0]].classList.add("snake","snake-head");
+    if (direction === 1) {
+        squares[snake[0]].classList.add("head-right");
+    } else if (direction === width) {
+        squares[snake[0]].classList.add("head-down");
+    } else if (direction === -width) {
+        squares[snake[0]].classList.add("head-up");
+    } else if (direction === -1) {
+        squares[snake[0]].classList.add("head-left");
+    }
 }
 
 //eat an apple

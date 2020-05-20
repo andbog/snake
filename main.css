@@ -15,7 +15,7 @@
 }
 
 .center {
-  background-color: yellow;
+  background-image: url(../media/grass.png);
   display: flex;
   flex-wrap: wrap;
   width: 400px;
@@ -28,11 +28,26 @@
 }
 
 .apple {
-  background-color: red;
+  background-image: url(../media/apple.png);
 }
 
 .snake {
-  background-color: green;
+  background-image: url(../media/snake2.png);
+}
+.snake-head {
+  background-image: url(../media/head.png);
+}
+.snake.head-down {
+  transform: rotate(270deg);
+}
+.snake.head-left {
+  transform: rotate(0deg);
+}
+.snake.head-up {
+  transform: rotate(90deg);
+}
+.snake.head-right {
+  transform: rotate(180deg);
 }
 
 /*# sourceMappingURL=main.css.map */
