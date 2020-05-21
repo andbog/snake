@@ -15,7 +15,7 @@
 }
 
 .center {
-  background-image: url(../media/grass.png);
+  background-image: url(./media/grass.png);
   display: flex;
   flex-wrap: wrap;
   width: 400px;
@@ -28,14 +28,20 @@
 }
 
 .apple {
-  background-image: url(../media/apple.png);
+  background-image: url(./media/apple.png);
 }
 
 .snake {
-  background-image: url(../media/snake2.png);
+  background-image: url(./media/snake2.png);
 }
 .snake-head {
-  background-image: url(../media/head.png);
+  background-image: url(./media/head.png);
+}
+.snake-curve {
+  background-image: url(./media/snake_curve.png);
+}
+.snake-curve-mirror {
+  background-image: url(./media/snake_curve_mirror.png);
 }
 .snake.head-down {
   transform: rotate(270deg);

@@ -34,9 +34,6 @@ document.addEventListener("DOMContentLoaded" , () => {
             eatApple(squares);
         } 
      ,snakeSpeed)}});
-
-    //start button
-    //score / eating apple
-    //game over - hitting walls 
+ 
 
 })

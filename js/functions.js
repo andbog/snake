@@ -1,5 +1,5 @@
 import { width, height, board, snake, initialPos, displayScore,setScore,score,setDirection, direction,timeLeft } from './variables.js';
-
+var prevDir=direction;
 
 //initialize board
 export function initilizeBoard(){
@@ -28,19 +28,32 @@ export function initSnake(squares) {
 
 export function changeDirection(e,squares) {
 
+
     if (e.keyCode === 37) {
+        if (direction === -width) squares[snake[0]].classList.add("snake-curve");
+        if (direction === width) squares[snake[0]].classList.add("snake-curve-mirror");
+        // prevDir=direction;
         setDirection(-1)
         moveSnake(squares,direction);
         eatApple(squares);
     } else if (e.keyCode === 38) {
+        if (direction === 1) squares[snake[0]].classList.add("snake-curve");
+        if (direction === -1) squares[snake[0]].classList.add("snake-curve-mirror");
+        // prevDir=direction;
         setDirection(-width)
         moveSnake(squares,direction);
         eatApple(squares);
     } else if (e.keyCode === 39) {
+        if (direction === width) squares[snake[0]].classList.add("snake-curve");
+        if (direction === -width) squares[snake[0]].classList.add("snake-curve-mirror");
+        // prevDir=direction;
         setDirection(1)
         moveSnake(squares,direction);
         eatApple(squares);
     } else if (e.keyCode === 40) {
+        if (direction === -1) squares[snake[0]].classList.add("snake-curve");
+        if (direction === 1) squares[snake[0]].classList.add("snake-curve-mirror");
+        // prevDir=direction;
         setDirection(width)
         moveSnake(squares,direction);
         eatApple(squares);
@@ -49,10 +62,14 @@ export function changeDirection(e,squares) {
 export function moveSnake(squares,direction){
     // console.log(snake)
     GameOver(squares,direction)
-    squares[snake.pop()].classList.remove("snake");
+    squares[snake.pop()].classList.remove("snake","head-down","head-up","head-right","head-left","snake-curve","snake-curve-mirror");
     squares[snake[0]].classList.remove("snake-head");
     snake.unshift(snake[0]+direction);
     squares[snake[0]].classList.add("snake","snake-head");
+    // if ((direction !== prevDir) && (direction !== -prevDir)) {
+    //     console.log(direction)
+    //     console.log(prevDir)
+    //     squares[snake[0]].classList.add("snake-curve")};
     if (direction === 1) {
         squares[snake[0]].classList.add("head-right");
     } else if (direction === width) {
@@ -103,15 +120,3 @@ function GameOver(squares,direction) {
         location.reload()
 }
 }
-
-
-/////to be done 
-//graphics
-//styling
-//levels (speed, stones, mice)
-//Leaderboard
-
-
-////// Some bugs
-// when it hits bottom and top it checks until any segment is visible before reloading
-// sometimes snakes 'hops' over itself or walls (it's possible for the head to skip squares ehn rushing by arrows)
