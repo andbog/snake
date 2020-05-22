@@ -1,9 +1,12 @@
-import { initilizeBoard, placeApple, initSnake, moveSnake, changeDirection,eatApple } from './js/functions.js';
-import { direction,updateTimeLeft,snakeSpeed, timeLeft } from './js/variables.js';
+import { initilizeBoard, placeApple, initSnake, moveSnake, changeDirection,eatApple,showLeaderBoard } from './js/functions.js';
+import { direction,updateTimeLeft,snakeSpeed } from './js/variables.js';
+
+
 
 document.addEventListener("DOMContentLoaded" , () => {
     initilizeBoard()
 
+    showLeaderBoard()
     let btnStart=document.querySelector("#btn-start");
     
     const squares = Array.from(document.querySelectorAll(".center div"));
@@ -12,6 +15,10 @@ document.addEventListener("DOMContentLoaded" , () => {
 
     placeApple(squares)
     initSnake(squares)
+
+    let username = prompt("How shall I call you, master?");
+    
+
 
     function newDirection(e) {
         changeDirection(e,squares);     

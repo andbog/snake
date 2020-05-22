@@ -1,5 +1,4 @@
-import { width, height, board, snake, initialPos, displayScore,setScore,score,setDirection, direction,timeLeft } from './variables.js';
-var prevDir=direction;
+import { width, height, board, snake, initialPos, displayScore,setScore,score,setDirection, direction,timeLeft, leaderBoardjson} from './variables.js';
 
 //initialize board
 export function initilizeBoard(){
@@ -32,44 +31,35 @@ export function changeDirection(e,squares) {
     if (e.keyCode === 37) {
         if (direction === -width) squares[snake[0]].classList.add("snake-curve");
         if (direction === width) squares[snake[0]].classList.add("snake-curve-mirror");
-        // prevDir=direction;
         setDirection(-1)
         moveSnake(squares,direction);
         eatApple(squares);
     } else if (e.keyCode === 38) {
         if (direction === 1) squares[snake[0]].classList.add("snake-curve");
         if (direction === -1) squares[snake[0]].classList.add("snake-curve-mirror");
-        // prevDir=direction;
         setDirection(-width)
         moveSnake(squares,direction);
         eatApple(squares);
     } else if (e.keyCode === 39) {
         if (direction === width) squares[snake[0]].classList.add("snake-curve");
         if (direction === -width) squares[snake[0]].classList.add("snake-curve-mirror");
-        // prevDir=direction;
         setDirection(1)
         moveSnake(squares,direction);
         eatApple(squares);
     } else if (e.keyCode === 40) {
         if (direction === -1) squares[snake[0]].classList.add("snake-curve");
         if (direction === 1) squares[snake[0]].classList.add("snake-curve-mirror");
-        // prevDir=direction;
         setDirection(width)
         moveSnake(squares,direction);
         eatApple(squares);
     }
 }
 export function moveSnake(squares,direction){
-    // console.log(snake)
     GameOver(squares,direction)
     squares[snake.pop()].classList.remove("snake","head-down","head-up","head-right","head-left","snake-curve","snake-curve-mirror");
     squares[snake[0]].classList.remove("snake-head");
     snake.unshift(snake[0]+direction);
     squares[snake[0]].classList.add("snake","snake-head");
-    // if ((direction !== prevDir) && (direction !== -prevDir)) {
-    //     console.log(direction)
-    //     console.log(prevDir)
-    //     squares[snake[0]].classList.add("snake-curve")};
     if (direction === 1) {
         squares[snake[0]].classList.add("head-right");
     } else if (direction === width) {
@@ -120,3 +110,29 @@ function GameOver(squares,direction) {
         location.reload()
 }
 }
+
+export function readLeaderBoard() {
+    let xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("GET", "leaderboard.json", false);
+    xmlhttp.send();
+    return JSON.parse(xmlhttp.response)
+}
+
+//to be created
+export function showLeaderBoard() {
+    let rightSide = document.querySelector(".side-right-scores");
+    leaderBoardjson.forEach((i,ix) => {
+        let nextScore = document.createElement("div")
+        nextScore.classList.add(".side-right-score-entry")
+        if (ix===0) nextScore.classList.add(".gold");
+        if (ix===1) nextScore.classList.add(".silver");
+        if (ix===2) nextScore.classList.add(".bronze");
+        let place = ix+1;
+        nextScore.innerHTML=place + ". "+i.user+" "+i.score
+        rightSide.appendChild(nextScore)
+    })
+}
+
+// export function createScoreEntry()
+
+// export function WriteLeaderBoard()

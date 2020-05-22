@@ -1,3 +1,5 @@
+import {readLeaderBoard} from "./functions.js"
+
 
 export const width = 20;
 export const height = 30;
@@ -16,7 +18,7 @@ export let snakeSpeed=500;
 
 export function updateTimeLeft() {
     timeLeft-=1;
-    Timer.textContent="Left "+timeLeft+" seconds"
+    Timer.textContent="Time Left: "+timeLeft+" seconds";
 }
 
 export function setDirection(val) {
@@ -30,3 +32,8 @@ export function setDirection(val) {
 export function setScore(value) {
     score+=value;
 }
+
+
+export let leaderBoardjson = readLeaderBoard();
+export let scores = [];
+leaderBoardjson.forEach(i => scores.push(i.score));
