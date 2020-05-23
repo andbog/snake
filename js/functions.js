@@ -1,5 +1,5 @@
 import { width, height, board, snake, initialPos, displayScore,setScore,score,setDirection, direction,timeLeft, leaderBoardjson} from './variables.js';
-
+import {stopTime} from '../main.js'
 //initialize board
 export function initilizeBoard(){
     for (var i=0; i<width*height; i++) {
@@ -92,6 +92,15 @@ function growSnake(squares){
     squares[snake[0]].classList.remove("snake-head");
     snake.unshift(newSegment);
     squares[snake[0]].classList.add("snake","snake-head");
+    if (direction === 1) {
+        squares[snake[0]].classList.add("head-right");
+    } else if (direction === width) {
+        squares[snake[0]].classList.add("head-down");
+    } else if (direction === -width) {
+        squares[snake[0]].classList.add("head-up");
+    } else if (direction === -1) {
+        squares[snake[0]].classList.add("head-left");
+    }
 }
 
 function GameOver(squares,direction) {
@@ -106,8 +115,9 @@ function GameOver(squares,direction) {
     ) over = true; 
 
     if (over){
+        stopTime();
         alert("Game over! Your score is "+score);
-        location.reload()
+        location.reload();
 }
 }
 

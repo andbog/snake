@@ -1,22 +1,26 @@
 import { initilizeBoard, placeApple, initSnake, moveSnake, changeDirection,eatApple,showLeaderBoard } from './js/functions.js';
 import { direction,updateTimeLeft,snakeSpeed } from './js/variables.js';
 
-
+let timerId;
+export function stopTime() {
+    clearInterval(timerId);
+    timerId=null;
+}
 
 document.addEventListener("DOMContentLoaded" , () => {
     initilizeBoard()
 
-    showLeaderBoard()
+    // showLeaderBoard()
     let btnStart=document.querySelector("#btn-start");
     
     const squares = Array.from(document.querySelectorAll(".center div"));
-    let timerId;
+
     let timerLeftId;
 
     placeApple(squares)
     initSnake(squares)
 
-    let username = prompt("How shall I call you, master?");
+    // let username = prompt("How shall I call you, master?");
     
 
 
@@ -27,8 +31,7 @@ document.addEventListener("DOMContentLoaded" , () => {
     btnStart.addEventListener('click',()=>{
         if (timerId) {
             btnStart.textContent="Start";
-            clearInterval(timerId);
-            timerId=null;
+            stopTime();
             clearInterval(timerLeftId);
             timerLeftId=null;
             document.removeEventListener('keyup',newDirection);
